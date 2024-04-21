@@ -5,6 +5,15 @@
  * For more details take a look at the Java Quickstart chapter in the Gradle
  * user guide available at https://docs.gradle.org/4.4.1/userguide/tutorial_java_projects.html
  */
+plugins {
+    id 'org.springframework.boot' version '2.6.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
@@ -17,6 +26,7 @@ repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -25,8 +35,12 @@ dependencies {
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
-
+test {
+    useJUnitPlatform()
+}
 // Define the main class for the application
 mainClassName = 'App'
 
