@@ -1,34 +1,34 @@
 package com.api.insightink.insightInk.service;
 
-import com.api.insightink.insightInk.model.SentimentResult;
-import com.api.insightink.insightInk.model.ApiKey;
-import org.springframework.http.ResponseEntity;
+import com.google.cloud.vertexai.VertexAI;
+import com.google.cloud.vertexai.api.GenerateContentResponse;
+import com.google.cloud.vertexai.generativeai.ChatSession;
+import com.google.cloud.vertexai.generativeai.GenerativeModel;
+import com.google.cloud.vertexai.generativeai.ResponseHandler;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import com.api.insightink.insightInk.utils.BearerTokenAuthInterceptor;
 
-import java.util.Collections;
-import java.util.Map;
+import java.io.IOException;
 
 @Service
 public class SentimentService {
 
-    private final String endpointUrl;
-    private final RestTemplate restTemplate;
+    public static void performSentimentAnalysis(){
+        try (VertexAI vertexAI = new VertexAI("eng-hash-421213", "us-central1")) {
+            GenerateContentResponse response;
 
-    public SentimentService(ApiKey apiKey) {
-        this.endpointUrl = "https://projects/{project-id}/locations/{location}/endpoints/sentiment_analysis";
-        this.restTemplate = new RestTemplate();
-        restTemplate.setInterceptors(
-                Collections.singletonList(new BearerTokenAuthInterceptor(apiKey.getApiKey())));
-    }
+            GenerativeModel model = new GenerativeModel("gemini-1.0-pro", vertexAI);
+            ChatSession chatSession = new ChatSession(model);
 
-    public SentimentResult analyzeSentiment(String text) {
-        // Replace with your project ID and location
-        String url = endpointUrl.replace("{project-id}", "your-project-id")
-                .replace("{location}", "us-central1");
-        Map<String, String> requestBody = Collections.singletonMap("content", text);
-        ResponseEntity<SentimentResult> response = restTemplate.postForEntity(url, requestBody, SentimentResult.class);
-        return response.getBody();
+            response = chatSession.sendMessage("Hello.");
+            System.out.println(ResponseHandler.getText(response));
+
+            response = chatSession.sendMessage("What are all the colors in a rainbow?");
+            System.out.println(ResponseHandler.getText(response));
+
+            response = chatSession.sendMessage("Why does it appear when it rains?");
+            System.out.println(ResponseHandler.getText(response));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

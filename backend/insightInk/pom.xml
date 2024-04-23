@@ -27,6 +27,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- To use gemini ai via the vertex ai -->
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-vertexai</artifactId>
+			<version>0.4.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
