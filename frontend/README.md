@@ -20,3 +20,23 @@ Create Expo project
 ```
 expo init YourAppName
 ```
+
+Install dependencies
+```
+npm install @react-navigation/native @react-navigation/bottom-tabs react-native-screens react-native-safe-area-context
+```
+
+Install npx expo doctor to manage dependencies using epxo
+```
+npx expo-doctor
+```
+
+To upgrade dependencies using expo:
+```
+npx expo install --check
+```
+
+Starting expo app
+```
+expo start
+```
