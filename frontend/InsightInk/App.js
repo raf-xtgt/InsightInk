@@ -15,8 +15,8 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Main" component={MainStackNavigator} options={{ headerShown: false }} />
-        <Stack.Screen name="AddContent" component={AddNoteScreen} options={{ title: 'Add Content' }} />
-        <Stack.Screen name="UserProfile" component={UserProfileScreen} options={{ title: 'User Profile' }} />
+        <Stack.Screen name="Add Note" component={AddNoteScreen} options={{ title: 'Add Content' }} />
+        <Stack.Screen name="User Profile" component={UserProfileScreen} options={{ title: 'User Profile' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -26,8 +26,8 @@ function MainStackNavigator() {
   return (
     <Tab.Navigator initialRouteName="Home">
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="AddContent" component={AddNoteScreen} />
-      <Tab.Screen name="UserProfile" component={UserProfileScreen} />
+      <Tab.Screen name="Add Note" component={AddNoteScreen} />
+      <Tab.Screen name="User Profile" component={UserProfileScreen} />
     </Tab.Navigator>
   );
 }
