@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { Button } from 'react-native';
+import { createSentiment } from '../services/ApiService';
+
 
 function AddNoteScreen() {
   const [note, setNote] = useState('');
   const [sentimentResult, setSentimentResult] = useState('');
   // Function to handle analyzing sentiment (replace it with your actual logic)
-  const analyzeSentiment = () => {
-    // Perform sentiment analysis here and update sentimentResult state
-    setSentimentResult('Positive');
-  };
+  const analyzeSentiment = async () => {
+    try {
+      console.log("note", note)
+      const url = 'http://192.168.1.17:8080/init-sentiment'; // Replace with your actual API endpoint
+      const data = { }; // Assuming your data is in the format expected by your API
 
+      const response = await createSentiment(url, data);
+      console.log('Sentiment analysis result:', response);
+      // setSentimentResult(response.sentiment); // Assuming the response contains sentiment information
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle error
+    }
+  };
   return (
     <View style={styles.container}>
       <TextInput

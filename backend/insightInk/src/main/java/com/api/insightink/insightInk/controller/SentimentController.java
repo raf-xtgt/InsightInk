@@ -12,7 +12,7 @@ public class SentimentController {
     public String index() {
         return "Greetings from Spring Boot!";
     }
-    @PostMapping(value = "/post-text", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/init-sentiment", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void analyze(@RequestBody String text) {
         new SentimentService().performSentimentAnalysis();
     }
