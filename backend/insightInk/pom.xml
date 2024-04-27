@@ -35,6 +35,13 @@
 			<version>0.4.0</version>
 		</dependency>
 
+		<!-- To setup psql db -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.24</version> <!-- Use the latest version -->
+		</dependency>
+
 	</dependencies>
 
 	<build>
