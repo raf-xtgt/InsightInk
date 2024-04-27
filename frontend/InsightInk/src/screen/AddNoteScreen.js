@@ -11,11 +11,14 @@ function AddNoteScreen() {
     try {
       console.log("note", note)
       const url = 'http://192.168.1.17:8080/init-sentiment'; // Replace with your actual API endpoint
-      const data = { }; // Assuming your data is in the format expected by your API
+      const data = { 
+        note:note,
+        sentiment:""
+      };
 
       const response = await createSentiment(url, data);
       console.log('Sentiment analysis result:', response);
-      // setSentimentResult(response.sentiment); // Assuming the response contains sentiment information
+      setSentimentResult(response.sentiment); // Assuming the response contains sentiment information
     } catch (error) {
       console.error('Error:', error);
       // Handle error

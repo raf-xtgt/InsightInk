@@ -1,4 +1,5 @@
 package com.api.insightink.insightInk.controller;
+import com.api.insightink.insightInk.model.Sentiment;
 import com.api.insightink.insightInk.service.SentimentService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +14,9 @@ public class SentimentController {
         return "Greetings from Spring Boot!";
     }
     @PostMapping(value = "/init-sentiment", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void analyze(@RequestBody String text) {
-        new SentimentService().performSentimentAnalysis();
+    public Sentiment analyze(@RequestBody final Sentiment sentimentContainer) {
+        System.out.println(sentimentContainer.getNote());
+        return new SentimentService().performSentimentAnalysis(sentimentContainer);
     }
 
 

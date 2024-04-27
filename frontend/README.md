@@ -40,3 +40,8 @@ Starting expo app
 ```
 expo start
 ```
+
+Run the app with the ability to view logs
+```
+npx expo start
+```
