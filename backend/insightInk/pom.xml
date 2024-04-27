@@ -42,6 +42,13 @@
 			<version>42.2.24</version> <!-- Use the latest version -->
 		</dependency>
 
+		<!-- To create the jdbc datasource and db transaction -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>5.3.6</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
