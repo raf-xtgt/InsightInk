@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { createSentiment } from '../services/ApiService';
 
 
@@ -36,13 +36,17 @@ function AddNoteScreen() {
       <TouchableOpacity style={styles.button} onPress={analyzeSentiment}>
         <Text style={styles.buttonText}>Analyze Sentiment</Text>
       </TouchableOpacity>
-      <TextInput
-        style={[styles.textInput, { marginTop: 20, height: 100, textAlignVertical: 'top', readOnly: true }]}
-        multiline
-        placeholder="Sentiment Result"
-        value={sentimentResult}
-        editable={false}
-      />
+      
+      {/* Sentiment result box */}
+      <ScrollView style={{ width:'100%', flexDirection:'column', flexGrow:1}}>
+        <TextInput
+          style={[styles.textInput, { marginTop: 20, flex:1, textAlignVertical: 'top' }]}
+          multiline
+          placeholder="Sentiment Result"
+          value={sentimentResult}
+          editable={false}
+        />
+      </ScrollView>
     </View>
   );
 }
