@@ -37,16 +37,16 @@ function AddNoteScreen() {
         <Text style={styles.buttonText}>Analyze Sentiment</Text>
       </TouchableOpacity>
       
-      {/* Sentiment result box */}
-      <ScrollView style={{ width:'100%', flexDirection:'column', flexGrow:1}}>
+      <View style={styles.resultContainer}>
         <TextInput
-          style={[styles.textInput, { marginTop: 20, flex:1, textAlignVertical: 'top' }]}
+          style={styles.resultTextInput}
           multiline
           placeholder="Sentiment Result"
+          showSoftInputOnFocus={false}  // hide the keyboard when user interacts with the senitment text.
           value={sentimentResult}
-          editable={false}
+          editable={true}
         />
-      </ScrollView>
+      </View>
     </View>
   );
 }
@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
 
   container:{
     flex: 1,
-    // justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
   },
@@ -83,6 +82,21 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  resultContainer: {
+    marginTop:10,
+    width: '100%',
+    height: 200, // Set fixed height
+    borderWidth: 1,
+    borderColor: 'lightgrey',
+    borderRadius: 10,
+    marginBottom: 20,
+    overflow: 'scroll', // Allow scrolling
+  },
+  resultTextInput: {
+    width: '100%',
+    height: '100%', // Fill parent container
+    padding: 10,
   },
 });
 
