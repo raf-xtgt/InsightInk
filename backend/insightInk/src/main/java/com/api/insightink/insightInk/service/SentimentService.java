@@ -1,6 +1,6 @@
 package com.api.insightink.insightInk.service;
 
-//import com.api.insightink.insightInk.entity.SentimentEntity;
+import com.api.insightink.insightInk.entity.SentimentEntity;
 import com.api.insightink.insightInk.model.Sentiment;
 //import com.api.insightink.insightInk.repository.SentimentRepository;
 import com.google.cloud.vertexai.VertexAI;
@@ -9,12 +9,15 @@ import com.google.cloud.vertexai.generativeai.ChatSession;
 import com.google.cloud.vertexai.generativeai.GenerativeModel;
 import com.google.cloud.vertexai.generativeai.ResponseHandler;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+//import com.api.insightink.insightInk.repository.SentimentRepository;
 
 import java.io.IOException;
 
 @Service
 public class SentimentService {
-//    private final SentimentRepository sentimentRepository = null;
+//    @Autowired
+//    private SentimentRepository sentimentRepository;
 
     public Sentiment performSentimentAnalysis(final Sentiment payload){
         System.out.println(payload.getNote());
@@ -27,7 +30,11 @@ public class SentimentService {
             response = chatSession.sendMessage(payload.getNote());
             System.out.println(ResponseHandler.getText(response));
 
-//            this.sentimentRepository.save(payload);
+            SentimentEntity product = new SentimentEntity();
+            product.setSentiment(response.toString());
+            product.setNote(payload.getNote());
+//            this.sentimentRepository.save(product);
+
             return new Sentiment(payload.getNote(), ResponseHandler.getText(response));
         } catch (IOException e) {
             throw new RuntimeException(e);

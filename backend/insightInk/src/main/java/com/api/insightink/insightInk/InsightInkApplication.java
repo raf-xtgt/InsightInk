@@ -12,9 +12,5 @@ public class InsightInkApplication {
 		SpringApplication.run(InsightInkApplication.class, args);
 	}
 
-//	@Bean(name="entityManagerFactory")
-//	public LocalSessionFactoryBean sessionFactory() {
-//		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-//		return sessionFactory;
-//	}
+	//psql -U raf -d insightInkDB -h localhost -p 5432 -W
 }
