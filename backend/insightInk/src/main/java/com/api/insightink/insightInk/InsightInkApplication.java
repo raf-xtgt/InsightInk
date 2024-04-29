@@ -12,9 +12,9 @@ public class InsightInkApplication {
 		SpringApplication.run(InsightInkApplication.class, args);
 	}
 
-	@Bean(name="entityManagerFactory")
-	public LocalSessionFactoryBean sessionFactory() {
-		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-		return sessionFactory;
-	}
+//	@Bean(name="entityManagerFactory")
+//	public LocalSessionFactoryBean sessionFactory() {
+//		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+//		return sessionFactory;
+//	}
 }

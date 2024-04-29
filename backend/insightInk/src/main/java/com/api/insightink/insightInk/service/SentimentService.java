@@ -1,8 +1,8 @@
 package com.api.insightink.insightInk.service;
 
-import com.api.insightink.insightInk.entity.SentimentEntity;
+//import com.api.insightink.insightInk.entity.SentimentEntity;
 import com.api.insightink.insightInk.model.Sentiment;
-import com.api.insightink.insightInk.repository.SentimentRepository;
+//import com.api.insightink.insightInk.repository.SentimentRepository;
 import com.google.cloud.vertexai.VertexAI;
 import com.google.cloud.vertexai.api.GenerateContentResponse;
 import com.google.cloud.vertexai.generativeai.ChatSession;

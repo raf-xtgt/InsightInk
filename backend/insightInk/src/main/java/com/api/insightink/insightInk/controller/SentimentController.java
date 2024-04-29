@@ -1,5 +1,5 @@
 package com.api.insightink.insightInk.controller;
-import com.api.insightink.insightInk.entity.SentimentEntity;
+//import com.api.insightink.insightInk.entity.SentimentEntity;
 import com.api.insightink.insightInk.model.Sentiment;
 import com.api.insightink.insightInk.service.SentimentService;
 import org.springframework.http.MediaType;
