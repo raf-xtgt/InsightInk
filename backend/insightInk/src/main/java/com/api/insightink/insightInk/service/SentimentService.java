@@ -1,6 +1,8 @@
 package com.api.insightink.insightInk.service;
 
+import com.api.insightink.insightInk.entity.SentimentEntity;
 import com.api.insightink.insightInk.model.Sentiment;
+import com.api.insightink.insightInk.repository.SentimentRepository;
 import com.google.cloud.vertexai.VertexAI;
 import com.google.cloud.vertexai.api.GenerateContentResponse;
 import com.google.cloud.vertexai.generativeai.ChatSession;
@@ -12,8 +14,9 @@ import java.io.IOException;
 
 @Service
 public class SentimentService {
+//    private final SentimentRepository sentimentRepository = null;
 
-    public static Sentiment performSentimentAnalysis(final Sentiment payload){
+    public Sentiment performSentimentAnalysis(final Sentiment payload){
         System.out.println(payload.getNote());
         try (VertexAI vertexAI = new VertexAI("eng-hash-421213", "us-central1")) {
             GenerateContentResponse response;
@@ -24,6 +27,7 @@ public class SentimentService {
             response = chatSession.sendMessage(payload.getNote());
             System.out.println(ResponseHandler.getText(response));
 
+//            this.sentimentRepository.save(payload);
             return new Sentiment(payload.getNote(), ResponseHandler.getText(response));
         } catch (IOException e) {
             throw new RuntimeException(e);
