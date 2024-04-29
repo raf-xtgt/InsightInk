@@ -1,12 +1,13 @@
 package com.api.insightink.insightInk.entity;
-import javax.persistence.Entity;
+//import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import java.time.ZonedDateTime;
 import java.util.UUID;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 @Table(name = "sentimentEntity")

@@ -3,6 +3,7 @@ package com.api.insightink.insightInk.service;
 import com.api.insightink.insightInk.entity.SentimentEntity;
 import com.api.insightink.insightInk.model.Sentiment;
 //import com.api.insightink.insightInk.repository.SentimentRepository;
+import com.api.insightink.insightInk.repository.SentimentRepository;
 import com.google.cloud.vertexai.VertexAI;
 import com.google.cloud.vertexai.api.GenerateContentResponse;
 import com.google.cloud.vertexai.generativeai.ChatSession;
@@ -16,8 +17,8 @@ import java.io.IOException;
 
 @Service
 public class SentimentService {
-//    @Autowired
-//    private SentimentRepository sentimentRepository;
+    @Autowired
+    private SentimentRepository sentimentRepository;
 
     public Sentiment performSentimentAnalysis(final Sentiment payload){
         System.out.println(payload.getNote());
@@ -33,8 +34,7 @@ public class SentimentService {
             SentimentEntity product = new SentimentEntity();
             product.setSentiment(response.toString());
             product.setNote(payload.getNote());
-//            this.sentimentRepository.save(product);
-
+            this.sentimentRepository.save(product);
             return new Sentiment(payload.getNote(), ResponseHandler.getText(response));
         } catch (IOException e) {
             throw new RuntimeException(e);
