@@ -13,7 +13,8 @@ function HomeScreen() {
       try {
         const url = 'http://192.168.1.17:8080/get-sentiments';
         const response = await getSentiments(url);
-        console.log('Sentiments:', response);
+        console.log("ping")
+        // console.log('Sentiments:', response);
         setSentiments(response);
       } catch (error) {
         console.error('Error:', error);
@@ -23,7 +24,7 @@ function HomeScreen() {
     // Call the function when the component mounts
     fetchSentiments();
 
-  });
+  },5000);
   const toggleExpand = (id) => {
     setExpandedCard(id === expandedCard ? null : id);
   };
@@ -70,7 +71,6 @@ const formatDate = (dateString) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     padding:10
   },
   scrollContainer: {
@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#caf0f8',
     marginVertical: 10,
     elevation: 3,
+    // overflow:'scroll'
   },
   introCard: {
     backgroundColor: '#00b4d8',
