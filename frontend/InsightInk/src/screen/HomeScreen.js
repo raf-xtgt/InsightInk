@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import { getSentiments } from '../services/ApiService';
-import { Card } from 'react-native-paper'; // Assuming you're using Paper for Card component
+import { Card, Paragraph } from 'react-native-paper'; // Assuming you're using Paper for Card component
+// import { IntroCard } from '../components/IntroCard';
 
 function HomeScreen() {
   const [sentiments, setSentiments] = useState([]);
@@ -27,23 +28,35 @@ function HomeScreen() {
     setExpandedCard(id === expandedCard ? null : id);
   };
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {sentiments.map((item) => (
-        <TouchableOpacity key={item.id} onPress={() => toggleExpand(item.id)}>
-          <Card style={styles.card}>
-            <Card.Title title={item.note} />
-            {expandedCard === item.id && (
-              <Card.Content>
-                <Text>{item.sentiment}</Text>
-              </Card.Content>
-            )}
-            <Card.Actions>
-              <Text>{formatDate(item.creationDate)}</Text>
-            </Card.Actions>
-          </Card>
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
+          <Card style={styles.introCard}>
+            <Card.Title title="Welcome to InsightInk!" />
+            <Card.Content>
+              <Paragraph>
+                InsightInk helps you track your thoughts and emotions, providing valuable insights to improve your well-being.
+              </Paragraph>
+            </Card.Content>
+        </Card>
+
+        {sentiments.map((item) => (
+          <TouchableOpacity key={item.id} onPress={() => toggleExpand(item.id)}>
+            <Card style={styles.card}>
+              <Card.Title title={item.note} />
+              {expandedCard === item.id && (
+                <Card.Content>
+                  <Text>{item.sentiment}</Text>
+                </Card.Content>
+              )}
+              <Card.Actions>
+                <Text>{formatDate(item.creationDate)}</Text>
+              </Card.Actions>
+            </Card>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+    </View>
+
   );
 }
 
@@ -56,12 +69,25 @@ const formatDate = (dateString) => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    padding:10
+  },
+  scrollContainer: {
     flexGrow: 1,
     paddingVertical: 20,
     paddingHorizontal: 10,
   },
   card: {
+    backgroundColor: '#caf0f8',
     marginVertical: 10,
+    elevation: 3,
+  },
+  introCard: {
+    backgroundColor: '#00b4d8',
+    borderColor: '#2980b9',
+    color:'white',
+    padding:10, 
   },
 });
 
