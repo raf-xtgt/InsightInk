@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
 
   },
   scrollContainer: {
-    paddingTop: 150, // Adjust as needed to offset the intro card height
+    paddingTop: 150,
     flexGrow: 1,
   },
   card: {

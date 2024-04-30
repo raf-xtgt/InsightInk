@@ -15,7 +15,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Main" component={MainStackNavigator} options={{ headerShown: false }} />
-        <Stack.Screen name="Add Note" component={AddNoteScreen} options={{ title: 'Add Content' }} />
+        <Stack.Screen name="Journal" component={AddNoteScreen} options={{ title: 'Journal' }} />
         <Stack.Screen name="About" component={AboutScreen} options={{ title: 'User Profile' }} />
       </Stack.Navigator>
     </NavigationContainer>
@@ -35,7 +35,7 @@ function MainStackNavigator() {
         }}
       />
       <Tab.Screen
-        name="Add Note"
+        name="Journal"
         component={AddNoteScreen}
         options={{
           tabBarIcon: ({ color, size }) => (

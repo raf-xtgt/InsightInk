@@ -18,7 +18,7 @@ function AddNoteScreen() {
     try {
       setLoading(true); // Set loading to true when analyzing sentiment
       // console.log("note", note)
-      const url = 'http://192.168.1.17:8080/init-sentiment'; // Replace with your actual API endpoint
+      const url = 'http://192.168.1.17:8080/init-sentiment'; // Replace with your IP 
       const data = { 
         note:note,
         sentiment:""
@@ -27,7 +27,7 @@ function AddNoteScreen() {
 
       const response = await createSentiment(url, data);
       console.log('Sentiment analysis result:', response);
-      setSentimentResult(response.sentiment); // Assuming the response contains sentiment information
+      setSentimentResult(response.sentiment); 
     } catch (error) {
       console.error('Error:', error);
       // Handle error
