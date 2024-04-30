@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { Card, Paragraph } from 'react-native-paper';
 
 function AboutScreen() {
@@ -11,7 +11,8 @@ function AboutScreen() {
 
   return (
     <View style={{ flex: 1, paddingHorizontal: 20, paddingTop: 20 }}>
-      {/* First Card */}
+      <ScrollView >
+        {/* About */}
       <Card style={{ marginBottom: 20 }}>
         <Card.Title title="InsightInk - AI powered journal app" />
         <Card.Content>
@@ -33,8 +34,8 @@ function AboutScreen() {
         </Card.Content>
       </Card>
 
-      {/* Second Card (Expandable Disclaimer) */}
-      <Card style={{ backgroundColor: '#ffcccc' }}>
+      {/* Disclaimer */}
+      <Card style={{ backgroundColor: '#ffcccc', margin:8 }}>
         <Card.Title
           title="Disclaimer"
           right={(props) => (
@@ -57,6 +58,7 @@ function AboutScreen() {
           </Card.Content>
         )}
       </Card>
+      </ScrollView>
     </View>
   );
 }
