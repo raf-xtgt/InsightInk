@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, Keyboard } from 'react-native';
 import { createSentiment } from '../services/ApiService';
 
@@ -7,6 +7,12 @@ function AddNoteScreen() {
   const [note, setNote] = useState('');
   const [sentimentResult, setSentimentResult] = useState('');
   const [loading, setLoading] = useState(false); // State to manage loading status
+
+
+  useEffect(() => {
+    setNote('')
+    setSentimentResult('')
+  },[]);
 
   const analyzeSentiment = async () => {
     try {
