@@ -23,7 +23,6 @@ public class SentimentService {
         this.sentimentRepository = sentimentRepository;
     }
     public Sentiment performSentimentAnalysis(final Sentiment payload) {
-        System.out.println(payload.getNote());
         try (VertexAI vertexAI = new VertexAI("eng-hash-421213", "us-central1")) {
             GenerateContentResponse response;
 
@@ -32,10 +31,11 @@ public class SentimentService {
 
             response = chatSession.sendMessage(payload.getNote());
             System.out.println(ResponseHandler.getText(response));
+//            System.out.println(response.getCandidates(0).getContent().);
 
             SentimentHdr sentimentEntity = new SentimentHdr();
             sentimentEntity.setId(UUID.randomUUID());
-            sentimentEntity.setSentiment(response.toString());
+            sentimentEntity.setSentiment(ResponseHandler.getText(response));
             sentimentEntity.setNote(payload.getNote());
             sentimentEntity.setCreationDate(ZonedDateTime.now());
 

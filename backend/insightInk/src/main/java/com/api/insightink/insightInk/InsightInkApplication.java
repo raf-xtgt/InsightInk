@@ -12,6 +12,4 @@ public class InsightInkApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(InsightInkApplication.class, args);
 	}
-
-	//psql -U raf -d insightInkDB -h localhost -p 5432 -W
 }

@@ -1,5 +1,6 @@
 package com.api.insightink.insightInk.controller;
 //import com.api.insightink.insightInk.entity.SentimentEntity;
+import com.api.insightink.insightInk.entity.SentimentHdr;
 import com.api.insightink.insightInk.model.Sentiment;
 import com.api.insightink.insightInk.repository.SentimentRepository;
 import com.api.insightink.insightInk.service.SentimentService;
@@ -15,10 +16,11 @@ public class SentimentController {
     public SentimentController(SentimentRepository sentimentRepository) {
         this.sentimentRepository = sentimentRepository;
     }
-    @GetMapping("/get-sentiment")
-    public String index() {
-        return "Greetings from Spring Boot!";
+    @GetMapping("/get-sentiments")
+    public Iterable<SentimentHdr> findAllEmployees() {
+        return this.sentimentRepository.findAll();
     }
+
     @PostMapping(value = "/init-sentiment", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Sentiment analyze(@RequestBody final Sentiment sentimentContainer) {
         System.out.println(sentimentContainer.getNote());
